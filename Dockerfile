@@ -9,7 +9,6 @@ RUN apk -v --update add \
         mailcap \
         curl \
         docker \
-        openssh \
         && \
     pip install awscli && \
     apk -v --purge del py-pip && \
