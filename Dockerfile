@@ -1,6 +1,7 @@
 FROM alpine:3.6
 
-# install awscli, docker, curl
+# install awscli, docker, docker-compose, curl
+# awscli and docker-compose installed separately because the latter has a stricter dep requirement on urllib3
 RUN apk -v --update add \
         python \
         py-pip \
@@ -11,6 +12,7 @@ RUN apk -v --update add \
         docker \
         && \
     pip install awscli && \
+    pip install docker-compose && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 

@@ -1,6 +1,6 @@
 # alpine-aws-docker
 
-AWS cli, ECS cli, & docker, installed on alpine linux
+AWS cli, ECS cli, docker, & docker-compose, installed on alpine linux
 
 To build and test
 
