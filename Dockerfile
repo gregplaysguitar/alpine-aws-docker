@@ -10,6 +10,7 @@ RUN apk -v --update add \
         mailcap \
         curl \
         docker \
+        jq \
         && \
     pip install awscli && \
     pip install docker-compose && \
