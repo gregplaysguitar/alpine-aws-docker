@@ -11,6 +11,7 @@ RUN apk -v --update add \
         curl \
         docker \
         jq \
+        git \
         && \
     pip install awscli && \
     pip install docker-compose && \
