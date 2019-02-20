@@ -3,6 +3,7 @@ FROM alpine:3.6
 # install awscli, docker, docker-compose, curl
 # awscli and docker-compose installed separately because the latter has a stricter dep requirement on urllib3
 RUN apk -v --update add \
+        bash \
         python \
         py-pip \
         groff \
