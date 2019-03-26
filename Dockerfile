@@ -14,6 +14,7 @@ RUN apk -v --update add \
         curl \
         docker \
         jq \
+        rsync \
         && \
     pip install awscli && \
     pip install docker-compose && \
