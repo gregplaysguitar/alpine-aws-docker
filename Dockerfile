@@ -1,7 +1,14 @@
-FROM alpine:3.6
+# source version
+# https://alpinelinux.org/
+FROM alpine:3.10
 
-# install awscli, docker, curl
+# pkg and pip installs
 RUN apk -v --update add \
+        bash \
+        git \
+        zip \
+        unzip \
+        openssh \
         python \
         py-pip \
         groff \
@@ -9,11 +16,14 @@ RUN apk -v --update add \
         mailcap \
         curl \
         docker \
+        jq \
+        rsync \
         && \
     pip install awscli && \
+    pip install docker-compose && \
     apk -v --purge del py-pip && \
     rm /var/cache/apk/*
 
-# install ecs-cli
+# ecs-cli install
 RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
 RUN chmod +x /usr/local/bin/ecs-cli
