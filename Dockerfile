@@ -3,6 +3,7 @@
 FROM alpine:3.10
 
 # pkg and pip installs
+# awscli and docker-compose installed separately because the latter has a stricter dependency requirements on urllib3
 RUN apk -v --update add \
         bash \
         git \
