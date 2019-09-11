@@ -1,5 +1,6 @@
 # source version
 # https://alpinelinux.org/
+# https://github.com/docker-library/python/blob/master/3.7/alpine3.10/Dockerfile
 FROM python:3.7-alpine
 
 # pkg and pip installs
