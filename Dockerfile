@@ -3,8 +3,8 @@
 FROM alpine:3.10
 
 # pkg and pip installs
-RUN apk update && \
-	apk add --no-cache \
+RUN apk update
+RUN apk add --no-cache \
         bash \
         git \
         zip \
