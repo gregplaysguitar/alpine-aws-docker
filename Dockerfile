@@ -3,27 +3,33 @@
 FROM alpine:3.10
 
 # pkg and pip installs
-# awscli and docker-compose installed separately because the latter has a stricter dependency requirements on urllib3
-RUN apk -v --update add \
+RUN apk update && \
+	apk add --no-cache \
         bash \
         git \
         zip \
         unzip \
-        openssh \
-        python \
-        py-pip \
-        groff \
-        less \
-        mailcap \
         curl \
-        docker \
         jq \
+        less \
+        groff \
+        mailcap \
+        docker \
         rsync \
-        && \
-    pip install awscli && \
-    pip install docker-compose && \
-    apk -v --purge del py-pip && \
-    rm /var/cache/apk/*
+        openssh \
+        make && \
+    ln -s locale.h /usr/include/xlocale.h && \
+    apk add --no-cache --virtual .build-deps \
+        python3-dev \
+        libffi-dev \
+        openssl-dev \
+        g++ && \
+    pip3 install --upgrade pip setuptools && \
+    pip3 install --no-cache-dir \
+        "urllib3<1.25,>=1.21.1" \
+        "PyYAML<4.3,>=3.10" \
+        awscli \
+        docker-compose
 
 # ecs-cli install
 RUN curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest
